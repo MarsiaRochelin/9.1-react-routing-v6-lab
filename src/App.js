@@ -1,3 +1,4 @@
+import { BrowserRouter as Router, Routes, Route} from "react-router-dom";
 import { useState } from "react";
 
 /*
@@ -25,11 +26,20 @@ function App() {
 
   return (
     <div className="wrapper">
+      <Router>
       <Nav />
-      <Home employees={employees} owners={owners} pets={pets} />
-      <StaffList employees={employees} />
-      <PetsList pets={pets} />
+      <Routes>
+      <Route path='/' element={<Home employees={employees} 
+      owners={owners} pets={pets}/>} 
+      />
+      <Route path='/staff' element={<StaffList employees={employees}/>} 
+      />
+      <Route path='/pets' element={<PetsList pets={pets} />} />
+      <Route path='/pets/:cats' element={<PetsList pets={pets} />} />
+      <Route path='/pets/:dogs' element={<PetsList pets={pets} />} />
+      </Routes>
       <Footer />
+      </Router>
     </div>
   );
 }
