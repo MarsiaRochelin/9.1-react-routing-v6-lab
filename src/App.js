@@ -1,5 +1,5 @@
 import { BrowserRouter as Router, Routes, Route} from "react-router-dom";
-import { useState } from "react";
+import { useState} from "react";
 
 /*
   Components
@@ -34,14 +34,16 @@ function App() {
       />
       <Route path='/staff' element={<StaffList employees={employees}/>} 
       />
-      <Route path='/pets' element={<PetsList pets={pets} />} />
-      <Route path='/pets/:cats' element={<PetsList pets={pets} />} />
-      <Route path='/pets/:dogs' element={<PetsList pets={pets} />} />
+      <Route path='/pets' element={<Navigate to="/pets/cats" />} />
+      <Route path='/pets/cats' element={<PetsList type={cats} />} />
+      <Route path='/pets/dogs' element={<PetsList type={dogs} />} />
       </Routes>
       <Footer />
       </Router>
     </div>
   );
+
+  
 }
 
 export default App;
